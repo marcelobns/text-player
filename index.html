@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TextPlayer</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="css/custom.css" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">TextPlayer</h1>
+            <br>
+            <form class="input-set">
+                <div class="form-group">
+                    <label for="wpm">WPM : <span>250</span></label>
+                    <input id="wpm" type="range" value="250" min=150 max=1000 step=10>
+                </div>
+                <div class="form-group">
+                    <label for="wpt">WPT : <span>1</span></label>
+                    <input id="wpt" type="range" value="1" min=1 max=12>
+                </div>
+                <div class="form-group">
+                    <label for="input">Input a text to read</label>
+                    <textarea id="input" rows="12" class="form-control">A computação pode ser definida como a busca de uma solução para um problema a partir de entradas (inputs) e tem seus resultados (outputs) depois de trabalhada através de um algoritmo. É com isto que lida a teoria da computação, subcampo da ciência da computação e da matemática. Durante milhares de anos, a computação foi executada com caneta e papel, ou com giz e ardósia, ou mentalmente, por vezes com o auxílio de tabelas ou utensílios artesanais. A partir da segunda metade do século XX, com o advento dos computadores eletrônicos, a Computação passou a ter uma presença cada vez mais marcante na sociedade, influenciando a vida diária de parte da população mundial. A partir da década de 1950, a Computação ganhou o status de Ciência surgindo então o termo ciência da computação, uma área do conhecimento humano hoje fortemente ligado à produção de software.</textarea>
+                </div>
+                <a id="play" href="#" class="btn btn-primary btn-block btn-lg">
+                    <i class="fa fa-play fa-lg"></i>
+                </a>
+            </form>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="reader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                  <p class="text-justify text-blur">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                  <p class="text-output">
+                      <span id="output"></span>
+                      <progress id="count" value="0" max="3">1</progress>
+                  </p>
+              </div>
+              <div class="modal-footer">
+                <button id="replay" class="btn btn-default btn-sm"><i class="fa fa-rotate-left fa-lg"></i></button>
+                <button id="backward" class="btn btn-default btn-sm disabled"><i class="fa fa-step-backward fa-lg"></i></button>
+                <button id="repro" class="btn btn-default btn-sm"><i class="fa fa-pause fa-lg"></i></button>
+                <button id="forward" class="btn btn-default btn-sm disabled"><i class="fa fa-step-forward fa-lg"></i></button>
+                <button class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-eject fa-lg"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
+    <script src="js/lib/jquery.min.js" charset="utf-8"></script>
+    <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/index.js" charset="utf-8"></script>
+</html>

@@ -1,0 +1,30 @@
+body {
+    background-color: #333;
+    color: #ddd;
+}
+#input {
+    background-color: #ddd;
+    border: 1px solid #000;
+    width: 100%;
+}
+#output {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+.modal-body p,
+.modal-body h5 {
+    color: #333;
+}
+.text-blur {
+    color: transparent!important;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.text-output {
+    position: absolute;
+    margin-top: -90px;
+    width: 95%;
+    text-align: center;
+}
+.container {
+    width: 960px;
+    max-width: 100%;
+}
