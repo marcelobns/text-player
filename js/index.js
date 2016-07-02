@@ -57,7 +57,7 @@ var modal = {
         output += modal.text[i];
 
         if(main.wpt.val() > 1 && modal.text[i].slice(-1) != '.'){
-            for (var j = 1; j < t; j++) {
+            for (var j = 1; j < main.wpt.val(); j++) {
                 i+=j;
                 output += modal.text[i]+' ';
             }
