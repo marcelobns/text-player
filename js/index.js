@@ -24,45 +24,49 @@ var modal = {
     output : $('#output'),
     replayBtn : $('#replay'),
     reproBtn : $('#repro'),
+    backwardBtn : $('#backward'),
+    forwardBtn : $('#forward'),
     play : function(){
         var interval = Math.round(1000/((main.wpm.val()/main.wpt.val())/60));
 
         modal.text = main.input.val().split(' ');
         modal.reproBtn.html('<i class="fa fa-pause fa-lg"></i>');
         modal.reproBtn.removeClass('paused');
-        modal.looping = setInterval(modal.loop, interval);
+        modal.looping = setInterval(function(){modal.read(+1)}, interval);
     },
     pause : function(){
-        clearInterval(modal.counting);
-        clearInterval(modal.looping);
-        modal.reproBtn.html('<i class="fa fa-play fa-lg"></i>');
-        modal.reproBtn.addClass('paused');
+        if(!modal.reproBtn.hasClass('paused')){
+            clearInterval(modal.counting);
+            clearInterval(modal.looping);
+            modal.reproBtn.html('<i class="fa fa-play fa-lg"></i>');
+            modal.reproBtn.addClass('paused');
+        }
     },
     stop : function(){
         modal.output.text('');
         modal.pause();
         modal.i = 0;
     },
-    loop : function(){
+    read : function(d){
         var i = modal.i || 0;
         var output = '';
         if(modal.text[i] == undefined){
             modal.stop();
             return false;
         }
-        if(modal.text[i].length <= 4){
+        if(modal.text[i].length <= 4 && d == +1){
             output = modal.text[i]+' ';
-            i++;
+            i+=(1*d);
         }
-        output += modal.text[i];
+        output += modal.text[i]+' ';
 
         if(main.wpt.val() > 1 && modal.text[i].slice(-1) != '.'){
             for (var j = 1; j < main.wpt.val(); j++) {
-                i+=j;
+                i+=(j*d);
                 output += modal.text[i]+' ';
             }
         }
-        i++;
+        i+=(1*d);
         modal.output.text(output.trim());
         modal.i = i;
         return true;
@@ -85,6 +89,14 @@ var modal = {
         modal.stop();
         modal.prepare();
     },
+    backward : function(){
+        modal.pause();
+        modal.read(-1);
+    },
+    forward : function(){
+        modal.pause();
+        modal.read(+1);
+    },
     listeners : function(){
         modal.reproBtn.on('click', function(){
             if(modal.reproBtn.hasClass('paused')){
@@ -95,6 +107,12 @@ var modal = {
         });
         modal.replayBtn.on('click', function(){
             modal.replay();
+        });
+        modal.backwardBtn.on('click',function(){
+            modal.backward();
+        });
+        modal.forwardBtn.on('click',function(){
+            modal.forward();
         });
     }
 }
